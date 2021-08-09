@@ -1,6 +1,6 @@
-This is the testing of connecction Arduino Nano directly to Xbee without using any shield.
+This is the test of connecting Arduino (Nano) directly to Xbee s2c without using any shield.
 
-Wired connecting
+Wire connection:
    Nano     |      Xbee
    3v3      |      3v3
    GND      |      GND
