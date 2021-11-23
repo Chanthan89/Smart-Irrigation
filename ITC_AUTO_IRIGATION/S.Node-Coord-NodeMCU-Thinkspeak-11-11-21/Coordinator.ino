@@ -1,5 +1,15 @@
 /*
    "Recieving data from XBee and sending to NodeMCU"
+   
+   --- MATERIAL ---
+   
+    - Arduino UNO
+    - XBee shiled for Arduino UNO
+    - NodeMCU
+      - Model : ESP8266
+      - Board : NodeMCU 0.9 (ESP-12 Module)
+      
+   --- PINOUT ---
 
    +-------+---------------+
    |  UNO  | XBee (Shield) |
@@ -24,11 +34,13 @@
 #include <SoftwareSerial.h>
 #include <XBee.h>
 
-//Define XBee serial pin
-HardwareSerial &XBee = Serial;
+/*
+ * APDU STRUCTURE
+ */
 
 //Define package structure
-/*  +--------+---------+----------+-------------+----------+-----------+------------+
+/*  
+    +--------+---------+----------+-------------+----------+-----------+------------+
     | header | node_id | humidity | temperature | moisture | radiation |            |
     +--------+---------+----------+-------------+----------+-----------+            |
     |   1    |    1    |     4    |      4      |     4    |     4     | = 18 bytes |
@@ -57,6 +69,9 @@ typedef union
 //mois1 and 2 should more than 50 in order to prevent relay activate in case one node is not available
 float temp1, hum1, mois1 = 50.0, rad1;
 float temp2, hum2, mois2 = 50.0, rad2;
+
+//Define XBee serial pin
+HardwareSerial &XBee = Serial;
 
 //Define NodeMCU serial pin
 SoftwareSerial esp(8, 9);
